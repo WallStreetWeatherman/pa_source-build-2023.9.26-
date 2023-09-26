@@ -1,7 +1,9 @@
 class Company:
     def __init__(self, name, operating_profit, tax_rate):
         self.name = name
-        self.operating_profit = operating_profit
+        
+        # Multiply values by 1,000,000 for internal computations
+        self.operating_profit = operating_profit * 1_000_000
         self.tax_rate = tax_rate
         
         # Validate the data upon initialization
@@ -25,9 +27,9 @@ def display_nopat(company):
     except Exception as e:
         print(f"An error occurred while processing the data for {company.name}. Error: {str(e)}\n")
 
-# Hardcoded values for two hypothetical companies
-company_A = Company("Company A", operating_profit=150000, tax_rate=0.3)  # Tax rate represented as 30%
+# Hardcoded values in decimals representing millions
+company_A = Company("Company A", operating_profit=0.15, tax_rate=0.3)  # Tax rate represented as 30%
 display_nopat(company_A)
 
-company_B = Company("Company B", operating_profit=100000, tax_rate=0.25)  # Tax rate represented as 25%
+company_B = Company("Company B", operating_profit=0.1, tax_rate=0.25)  # Tax rate represented as 25%
 display_nopat(company_B)
