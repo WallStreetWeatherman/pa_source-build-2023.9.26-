@@ -1,10 +1,12 @@
 class Company:
     def __init__(self, name, net_income, sales, average_assets, average_equity):
         self.name = name
-        self.net_income = net_income
-        self.sales = sales
-        self.average_assets = average_assets
-        self.average_equity = average_equity
+        
+        # Multiply values by 1,000,000 for internal computations
+        self.net_income = net_income * 1_000_000
+        self.sales = sales * 1_000_000
+        self.average_assets = average_assets * 1_000_000
+        self.average_equity = average_equity * 1_000_000
 
         # Validate the data upon initialization
         self._validate_data()
@@ -45,13 +47,15 @@ def display_dupont_analysis(company):
 
 # Try and Catch block to handle potential initialization errors
 try:
-    company_A = Company("Company A", net_income=100000, sales=500000, average_assets=2000000, average_equity=1000000)
+    # Representing values in decimals representing millions
+    company_A = Company("Company A", net_income=0.1, sales=0.5, average_assets=2.0, average_equity=1.0)
     display_dupont_analysis(company_A)
 except Exception as e:
     print(f"An error occurred while initializing data for Company A. Error: {str(e)}\n")
 
 try:
-    company_B = Company("Company B", net_income=120000, sales=550000, average_assets=2100000, average_equity=1050000)
+    # Representing values in decimals representing millions
+    company_B = Company("Company B", net_income=0.12, sales=0.55, average_assets=2.1, average_equity=1.05)
     display_dupont_analysis(company_B)
 except Exception as e:
     print(f"An error occurred while initializing data for Company B. Error: {str(e)}\n")
