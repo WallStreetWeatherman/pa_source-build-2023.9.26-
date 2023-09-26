@@ -1,8 +1,10 @@
 class Company:
     def __init__(self, name, nopat, capital, wacc):
         self.name = name
-        self.nopat = nopat
-        self.capital = capital
+        
+        # Multiply values by 1,000,000 for internal computations
+        self.nopat = nopat * 1_000_000
+        self.capital = capital * 1_000_000
         self.wacc = wacc
         
         # Validate the data upon initialization
@@ -29,9 +31,9 @@ def display_eva(company):
     except Exception as e:
         print(f"An error occurred while processing the data for {company.name}. Error: {str(e)}\n")
 
-# Hardcoded values for two hypothetical companies
-company_A = Company("Company A", nopat=50000, capital=400000, wacc=0.1)  # WACC represented as 10%
+# Hardcoded values in decimals representing millions
+company_A = Company("Company A", nopat=0.05, capital=0.4, wacc=0.1)  # WACC represented as 10%
 display_eva(company_A)
 
-company_B = Company("Company B", nopat=30000, capital=300000, wacc=0.08)  # WACC represented as 8%
+company_B = Company("Company B", nopat=0.03, capital=0.3, wacc=0.08)  # WACC represented as 8%
 display_eva(company_B)
